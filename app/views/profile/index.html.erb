@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+</head>
+<body>
+    <div class="profile-header">
+        <a href="/"><img id="logo" src="/images/logo2.png"></a>
+    </div>
+    
+    <div class="top-bar">
+        <img id="avatar">
+        <div class="personal-info">
+            <!--This block will cause ERROR untill the User model and the ProfileCtrl are implemented properly-->
+            <h2 id="name"><%= @user.name %></h2>
+            <img src="/images/email.png"><%= @user.email %>
+            <p><%= @user.description></p>
+        </div>
+        <div class="contribution">
+            <%= @user.semHours %> 
+            <p>Semester hours</p>
+            <%= @user.level %>
+            <p>Level</p>
+            <%= @user.totalHours %>
+            <p>Total hours</p>
+        </div>
+    </div>
+    
+    <div class="event">
+        <h2>Events</h2>
+    </div>
+    
+    <div class="tagged-pics">
+        <div class="row">
+            <div class="col"></div>
+            <div class="col"></div>
+            <div class="col"></div>
+        </div>
+    </div>
+</body>
+</html>
