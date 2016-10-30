@@ -12,17 +12,20 @@
         <div class="personal-info">
             <!--This block will cause ERROR untill the User model and the ProfileCtrl are implemented properly-->
             <h2 id="name"><%= @user.name %></h2>
-            <img src="/images/email.png"><%= @user.email %>
-            <p><%= @user.description></p>
+            <img src="/images/email.png">
+            Email:
+            <p><%= current_user.email %></p>
         </div>
-        <div class="contribution">
-            <%= @user.semHours %> 
-            <p>Semester hours</p>
-            <%= @user.level %>
-            <p>Level</p>
-            <%= @user.totalHours %>
-            <p>Total hours</p>
-        </div>
+        <% if false %>
+            <div class="contribution">
+                <%= @user.semHours %> 
+                <p>Semester hours</p>
+                <%= @user.level %>
+                <p>Level</p>
+                <%= @user.totalHours %>
+                <p>Total hours</p>
+            </div>
+        <% end %>
     </div>
     
     <div class="event">
