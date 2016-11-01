@@ -1,6 +1,8 @@
 source 'https://rubygems.org'
 
 
+gem 'fullcalendar-rails'
+gem 'momentjs-rails'
 # ruby '2.3.0' 
 
 #gem 'cucumber-rails'
