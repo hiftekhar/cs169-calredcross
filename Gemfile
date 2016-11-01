@@ -1,5 +1,10 @@
 source 'https://rubygems.org'
 
+gem 'omniauth'
+gem 'omniauth-google-oauth2'
+gem 'google_drive'
+gem 'google-api-client', '0.8.6', require: 'google/api_client' 
+
 
 gem 'fullcalendar-rails'
 gem 'momentjs-rails'
