@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  get 'authen_accept/accept'
+
   # get 'profile/index'
 
   resources :news
