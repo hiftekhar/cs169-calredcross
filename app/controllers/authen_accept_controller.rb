@@ -1,7 +1,7 @@
 
 require 'google/api_client/client_secrets' 
 #require 'googleauth'
-#require 'google/apis/drive_v2'
+#require 'google/apis/calendar_v2'
 
 #require 'googleauth/stores/file_token_store'
 #require 'google/apis/calendar_v3'
@@ -23,24 +23,49 @@ class AuthenAcceptController < ApplicationController
       auth_client.code = auth_code
       auth_client.fetch_access_token!
     end 
+    
+    
+    
+    
+    session[:access_token] = response['access_token']
+    
+    client = Signet::OAuth2::Client.new(access_token: session[:access_token])
+    
+    
+  api_client = Google::APIClient.new
+  cal = api_client.discovered_api('calendar', 'v3')
+    
+   # service = Google::APIClient::CalendarV3::CalendarService.new
    
-  #  client = Google::APIClient.new(
-  #    application_name: 'Example Ruby application',
-  #    application_version: '1.0.0'
-  #  )
-  
-#   client.key = "737968238189-n40p0c73pfbpr9ncmd67a4v84f7msuud.apps.googleusercontent.com" 
-#   Client.Authorization = auth_client.access_token
+   
+puts "Getting list of events..."
+list = api_client.execute(:api_method => cal.events.list, 
+	:authorization => auth_client,
+	:parameters => {
+		'maxResults' => 20, 
+		'q' => 'Meeting', 
+		'calendarId' => 'primary'})
 
-  #result = client.execute (
-  #   Api_method : Client.Discovered_api ( : Plus ) .Activities.List,
-  #   Parameters : { Collection : " Public " , userId : 101748015513264110691 }
-  #)
-  #service = Google::Apis::CalendarV3::CalendarService.new
-  #  one = Google::API.new 
-   
-    #drive = Google::Apis::CalendarV2::CalendarService.new
+puts "Fetched #{list.data.items.count} events..."
+
+#puts "Updating first event from list..."
+#update_event = list.data.items[0]
+#update_event.description = "Updated Description here"
+#result = api_client.execute(:api_method => cal.events.update, #
+#	:authorization => auth_client,#
+#	:parameters => { 'calendarId' => 'primary', 'eventId' => update_event.id}, 
+#	:headers => {'Content-Type' => 'application/json'},#
+#	:body_object => update_event)
+#puts "Done with update."
      
+#end 
+
+  i = 0
+  while (i < list.data.items.count) do 
+    print list.data.items[i].description
+    i += 1
+  end 
+  
 end 
 
 
