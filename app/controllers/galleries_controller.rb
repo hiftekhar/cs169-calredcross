@@ -1,7 +1,7 @@
 class GalleriesController < ApplicationController
   before_action :set_gallery, only: [:show, :edit, :update, :destroy]
   # config.middleware.insert_before Rack::Runtime, "InvalidPostDataInterceptor"
-
+  skip_before_filter :verify_authenticity_token  
   # GET /galleries
   # GET /galleries.json
   def index
@@ -16,10 +16,19 @@ class GalleriesController < ApplicationController
   end
   
   def addPhoto
+    print("~~~~~~~~~" + params["image"] + " THAT WAS THE PHOTO \n")
     photo = params["image"]
-    @gallery = Gallery.new()
-    @galery.image = photo
-    @galery.save
+    print("~~~~~~~~~~~ photo type: " + photo.class.to_s + "\n")
+    gallery = Gallery.new
+    gallery.image = ImageUploader(photo)
+    gallery.save!
+    print("~~~~~~~~~~ url: " + gallery.image.url.to_s + "\n")
+    print("~~~~~~~~~~ path: " + gallery.image.current_path.to_s + "\n")
+    print("~~~~~~~~~~ image identifier: " + gallery.image_identifier.to_s + "\n")
+    Gallery.columns_hash.each {|k,v| puts "#{k} => #{v.type}"}
+    # gallery = Gallery.new()
+    # @galery.image = photo
+    # @galery.save
     # params.keys.each do |key|
     #   print("~~~~~~" + key.to_s)
     # end

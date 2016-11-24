@@ -15,10 +15,10 @@
                 <div id="add-photo-title">Add photos from your computer.</div>
                 <label id="add-photos-label" for="add-photos">+ Select Photos</label>
                 <input type="file" id="add-photos" name="add-photos" multiple>
-                <%= form_for @gallery, html: {multipart: true } do |f| %>
+<!--                 <%= form_for @gallery, html: {multipart: true } do |f| %>
                     <%= f.file_field :image %>
                     <%= f.submit %>
-                <% end %>
+                <% end %> -->
             </div>
         </div>
     </div>
@@ -50,29 +50,47 @@
               });
         }
         $("input[name=add-photos]").change(function() {
-            // var images = [];
             for (var i = 0; i < $(this).get(0).files.length; ++i) {
-                // images.push($(this).get(0).files[i]);
                 var file = $(this).get(0).files[i];
-                var images = new FormData();
-                images.append(file.name, file);
-                console.log("Image: " + images);
-                $.ajax({
-                        type : 'post',
-                        url : "/galleries/add-photo",
-                        data : images,    
-                        dataType : 'json',
-                        async : false,
-                        context : document.body,
-                        success : function(response) {
-                            // var gallery = response;
-                            // console.log("Gallery: " + gallery);
+                var reader = new FileReader();
+                
+                reader.addEventListener("load", function () {
+                    var image = encodeURIComponent(reader.result);
+                    console.log("Image: " + image);
+                    var formData = new FormData();
+                    formData.append("image", image);
+                    var xhr = new XMLHttpRequest();
+                    xhr.open('POST', '/galleries/add-photo', true);
+                    xhr.onload = function () {
+                      if (xhr.status === 200) {
+                        // File(s) uploaded.
+                        console.log("Success uploading photo!");
+                      } else {
+                        alert('An error occurred!');
+                      }
+                    };
+                    xhr.send(formData);
+                    //  $.ajax({
+                    //     method : 'POST',
+                    //     url : "/galleries/add-photo",
+                    //     data : {formData: formData},    
+                    //     // dataType : 'json',
+                    //     // async : false,
+                    //     context : document.body,
+                    //     success : function(response) {
+                    //         // var gallery = response;
+                    //         // console.log("Gallery: " + gallery);
                             
                             
-                        },
-                        // contentType: false,
-                        processData: false
-                });
+                    //     },
+                    //     // contentType: false,
+                    //     processData: false
+                    // });
+                  }, false);
+
+                  if (file) {
+                    reader.readAsBinaryString(file);
+                  }
             }
             // console.log(images);
             closeLightbox();
