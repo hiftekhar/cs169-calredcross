@@ -1,4 +1,10 @@
 Rails.application.routes.draw do
+  get 'authen_accept/accept'
+
+  get 'calendar/index'
+
+  get 'members/index'
+
   # get 'profile/index'
   post 'profile/update', :to => 'profile#update'
   post 'members/update', :to => 'members#update'
