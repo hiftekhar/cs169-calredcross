@@ -44,6 +44,30 @@
 
     
     <script>
+        // function getBase64Image(img) {
+        //   var canvas = document.createElement("canvas");
+        //   canvas.width = img.width;
+        //   canvas.height = img.height;
+        //   var ctx = canvas.getContext("2d");
+        //   ctx.drawImage(img, 0, 0);
+        //   var dataURL = canvas.toDataURL("image/png");
+        //   return dataURL.replace(/^data:image\/(png|jpg);base64,/, "");
+        // }
+        
+        function encodeImage(src, callback) {
+            var canvas = document.createElement('canvas'),
+                ctx = canvas.getContext('2d'),
+                img = new Image();
+            
+              img.onload = function(){
+                canvas.width  = img.width;
+                canvas.height = img.height;
+                ctx.drawImage(img, 0, 0, img.width, img.height);
+                callback(canvas.toDataURL());
+              }
+              img.src = src;;
+        }
+
         var closeLightbox = function() {
             $("#add-photo-container").slideUp( "medium", function() {
                 $(this).hide(); 
@@ -107,7 +131,11 @@
             $.ajax({
                         type : 'post',
                         url : "/galleries/add-favorite",
-                        data : {"image": id},    
+                        data : {"image": id},
+                        // comment: how to call encodeImage?
+                        // encodeImage(data, function(encodedImage) { 
+                        //     document.getElementById('data').value = encodedImage;
+                        // });
                         dataType : 'json',
                         async : false,
                         context : $(this),
