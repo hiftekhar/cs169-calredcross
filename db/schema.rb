@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20161119171142) do
+ActiveRecord::Schema.define(version: 20161125012846) do
 
   create_table "events", force: :cascade do |t|
     t.string   "name"
@@ -61,6 +61,7 @@ ActiveRecord::Schema.define(version: 20161119171142) do
     t.integer  "is_officer",             default: 0
     t.integer  "sem_hours",              default: 0
     t.integer  "total_hours",            default: 0
+    t.string   "refresh_token"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
