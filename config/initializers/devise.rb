@@ -270,7 +270,7 @@ Devise.setup do |config|
   # config.router_name = :my_engine
   #
   
-  config.omniauth :google_oauth2, Settings.ga.app_key,Settings.ga.app_secret,{ 
+  config.omniauth :google_oauth2, "737968238189-n40p0c73pfbpr9ncmd67a4v84f7msuud.apps.googleusercontent.com", "opY7uxs0lTAMjYzrm4e19NK4",{ 
   access_type: "offline", 
   approval_prompt: "" ,
   :scope => "userinfo.email, userinfo.profile, plus.me, analytics.readonly"}
