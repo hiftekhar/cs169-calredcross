@@ -5,7 +5,6 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   # Set validation
   validates :name, :email, :major, presence: true
-  has_many :galleries
   has_many :favoritephotos, dependent: :destroy 
   has_many :photos, through: :favoritephotos, dependent: :destroy 
   
