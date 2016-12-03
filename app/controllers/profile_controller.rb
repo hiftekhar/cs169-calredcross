@@ -52,7 +52,8 @@ class ProfileController < ApplicationController
           @events << @event_one 
           
         end 
-          
+         
+        
       else  
  
          if @user.refresh_token.nil? 
