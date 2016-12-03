@@ -11,6 +11,7 @@ Event.destroy_all
 Gallery.destroy_all 
 Info.destroy_all
 HomeImage.destroy_all
+Photo.destroy_all
 
 User.create!([{
   email: "sampleofficer@gmail.com",
