@@ -55,9 +55,8 @@ end
  end 
  
  
- 
-  begin 
-    print "goes here"          
+    begin 
+      print "goes here"          
       signet = Signet::OAuth2::Client.new(
         client_id: "737968238189-n40p0c73pfbpr9ncmd67a4v84f7msuud.apps.googleusercontent.com",
         client_secret: "opY7uxs0lTAMjYzrm4e19NK4",
@@ -169,15 +168,12 @@ end
       if params[:hash_one] == nil
         print "oops"
       end 
-      
-      
-      redirect_to profile_index_path(:hash_one => hash_one)
-       
-    rescue 
-    hash_one = "try2222"
-     redirect_to profile_index_path(:hash_one => hash_one)
-   end 
     
+    rescue   
+      print "PROOOOOBSSSS"
+       
+     end 
+   
       
     #  print "HASH"
     #  print hash_one.length
