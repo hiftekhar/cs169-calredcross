@@ -168,9 +168,13 @@ end
       if params[:hash_one] == nil
         print "oops"
       end 
+      
+      redirect_to profile_index_path(:hash_one => hash_one)
     
     rescue   
-      print "PROOOOOBSSSS"
+      print "PROOOOOBSS"
+      hash_one = []
+      redirect_to profile_index_path(:hash_one => hash_one)
        
      end 
    
