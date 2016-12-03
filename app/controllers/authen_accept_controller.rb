@@ -53,7 +53,10 @@ end
       @user.update_attribute(:refresh_token, auth_client.refresh_token)
     #  redirect_to root_path
  end 
-    print "goes here"          
+ 
+ 
+    begin 
+      print "goes here"          
       signet = Signet::OAuth2::Client.new(
         client_id: "737968238189-n40p0c73pfbpr9ncmd67a4v84f7msuud.apps.googleusercontent.com",
         client_secret: "opY7uxs0lTAMjYzrm4e19NK4",
@@ -166,9 +169,19 @@ end
         print "oops"
       end 
       
-      
-      redirect_to profile_index_path(:hash_one => hash_one)
+    
+    rescue   
+      print "PROOOOOBSS"
+      hash_one = []
+      params[:hash_one] = hash_one
+      if hash_one != nil 
+        print "wooot"
+      end 
+      #redirect_to profile_index_path(:hash_one => hash_one)
        
+     end 
+   
+      
     #  print "HASH"
     #  print hash_one.length
     #  print "HASH"
