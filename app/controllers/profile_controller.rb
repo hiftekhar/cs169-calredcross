@@ -66,8 +66,7 @@ class ProfileController < ApplicationController
           auth_client.update!(
           :scope => 'https://www.googleapis.com/auth/calendar',
           :redirect_uri => 'https://damp-forest-29318.herokuapp.com/authen_accept/accept',
-          :access_type => 'offline', 
-          :approval_prompt => 'force'
+          :access_type => 'offline'
           )
           redirect_to auth_client.authorization_uri.to_s
         else
