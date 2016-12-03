@@ -17,9 +17,7 @@ class ProfileController < ApplicationController
     end
     
       
-    print "DOES THIS WORK"
-    print @user.refresh_token
-    print "HEYYYY"
+      
       @events = []
       
       if params[:hash_one] != nil 
@@ -55,7 +53,8 @@ class ProfileController < ApplicationController
           
         end 
          
-        
+      else if params[:hash_one] == 'try'
+        @events = []
       else  
  
          if @user.refresh_token.nil? 
