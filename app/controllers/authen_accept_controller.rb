@@ -42,7 +42,8 @@ end
         auth_client.update!(
           :scope => 'https://www.googleapis.com/auth/calendar',
           :redirect_uri => 'https://damp-forest-29318.herokuapp.com/authen_accept/accept',
-          :access_type => 'offline' 
+          :access_type => 'offline', 
+          :grant_type => 'refresh_token'
         )
         auth_client.code = auth_code
         auth_client.fetch_access_token!
