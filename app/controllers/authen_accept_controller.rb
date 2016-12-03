@@ -25,6 +25,8 @@ end
 
   def accept
     
+    
+    begin 
     @user = current_user
     
   
@@ -39,6 +41,12 @@ end
         auth_code = params[:code] 
         client_secrets = Google::APIClient::ClientSecrets.load
         auth_client = client_secrets.to_authorization
+        auth_client.update!(
+          :scope => 'https://www.googleapis.com/auth/calendar',
+          :redirect_uri => 'https://damp-forest-29318.herokuapp.com/authen_accept/accept',
+          :access_type => 'offline', 
+          :approval_prompt => 'force'
+        )
         auth_client.code = auth_code
         auth_client.fetch_access_token!
       end 
@@ -52,8 +60,7 @@ end
       @user.update_attribute(:refresh_token, auth_client.refresh_token)
     #  redirect_to root_path
  end 
-  
-  begin 
+   
     print "goes here"          
       signet = Signet::OAuth2::Client.new(
         client_id: "737968238189-n40p0c73pfbpr9ncmd67a4v84f7msuud.apps.googleusercontent.com",
@@ -169,6 +176,7 @@ end
       
       
       redirect_to profile_index_path(:hash_one => hash_one)
+    
     rescue 
       print "44444"
       hash_one = []
