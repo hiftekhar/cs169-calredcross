@@ -27,6 +27,8 @@ end
     
     @user = current_user
     
+  
+    
     
     if @user.refresh_token.nil? 
       print "go here"
@@ -41,18 +43,22 @@ end
           :scope => 'https://www.googleapis.com/auth/calendar',
           :redirect_uri => 'https://damp-forest-29318.herokuapp.com/authen_accept/accept',
           :access_type => 'offline'
+          :grant_type = 'refresh_token'
         )
         auth_client.code = auth_code
         auth_client.fetch_access_token!
       end 
+      
       @user.refresh_token = auth_client.refresh_token
       print "USER TOKEN"
       print "This is the refresh token"
+      print auth_client.refresh_token
       print @user.refresh_token
       print "USER TOKEN"
       @user.update_attribute(:refresh_token, auth_client.refresh_token)
     #  redirect_to root_path
  end 
+  
     print "goes here"          
       signet = Signet::OAuth2::Client.new(
         client_id: "737968238189-n40p0c73pfbpr9ncmd67a4v84f7msuud.apps.googleusercontent.com",
