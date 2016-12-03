@@ -17,7 +17,9 @@ class ProfileController < ApplicationController
     end
     
       
-      
+    print "DOES THIS WORK"
+    print @user.refresh_token
+    print "HEYYYY"
       @events = []
       
       if params[:hash_one] != nil 
