@@ -173,7 +173,11 @@ end
     rescue   
       print "PROOOOOBSS"
       hash_one = []
-    #  redirect_to profile_index_path(:hash_one => hash_one)
+      params[:hash_one] = hash_one
+      if hash_one != nil 
+        print "wooot"
+      end 
+      redirect_to profile_index_path(:hash_one => hash_one)
        
      end 
    
