@@ -177,7 +177,7 @@ end
       if hash_one != nil 
         print "wooot"
       end 
-      redirect_to profile_index_path(:hash_one => hash_one)
+      #redirect_to profile_index_path(:hash_one => hash_one)
        
      end 
    
