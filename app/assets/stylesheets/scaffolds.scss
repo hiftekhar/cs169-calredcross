@@ -78,6 +78,8 @@ div {
 
 #notice {
   color: green;
+  height: 0px !important;
+  position: fixed;
 }
 
 .field_with_errors {
