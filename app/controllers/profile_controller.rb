@@ -52,9 +52,7 @@ class ProfileController < ApplicationController
           @events << @event_one 
           
         end 
-         
-      else if params[:hash_one] == 'try'
-        @events = []
+          
       else  
  
          if @user.refresh_token.nil? 
