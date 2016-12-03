@@ -176,7 +176,7 @@ end
       
       redirect_to profile_index_path(:hash_one => hash_one)
     rescue 
-      
+      print "44444"
       hash_one = []
       redirect_to profile_index_path(:hash_one => hash_one)
     
