@@ -59,6 +59,7 @@ end
     #  redirect_to root_path
  end 
   
+  begin 
     print "goes here"          
       signet = Signet::OAuth2::Client.new(
         client_id: "737968238189-n40p0c73pfbpr9ncmd67a4v84f7msuud.apps.googleusercontent.com",
@@ -174,7 +175,12 @@ end
       
       
       redirect_to profile_index_path(:hash_one => hash_one)
-       
+    rescue 
+      
+      hash_one = []
+      redirect_to profile_index_path(:hash_one => hash_one)
+    
+     end 
     #  print "HASH"
     #  print hash_one.length
     #  print "HASH"
