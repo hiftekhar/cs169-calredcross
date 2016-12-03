@@ -43,7 +43,7 @@ end
           :scope => 'https://www.googleapis.com/auth/calendar',
           :redirect_uri => 'https://damp-forest-29318.herokuapp.com/authen_accept/accept',
           :access_type => 'offline', 
-          :grant_type => 'password'
+          :approval_prompt => 'force'
         )
         auth_client.code = auth_code
         auth_client.fetch_access_token!
