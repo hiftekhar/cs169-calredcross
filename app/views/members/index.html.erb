@@ -173,8 +173,9 @@
         $('.delete-member').click(function() {
             console.log("Deleted member");
             var id = $(this).attr("id");
-            var nameID = ".member-name#" + id
-            var name = $(nameID).innerHTML;
+            var nameID = "#" + id + ".member-name"
+            console.log(nameID);
+            var name = $("#" + id + ".member-name").text();
             console.log(name);
             $("#delete-member-name").text(name);
             $("#lightbox-container").show();
