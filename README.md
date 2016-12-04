@@ -4,7 +4,7 @@ CS169 Project - Cal Red Cross Website
 
 <a href="https://codeclimate.com/github/hiftekhar/cs169-calredcross"><img src="https://codeclimate.com/github/hiftekhar/cs169-calredcross/badges/gpa.svg" /></a> <a href="https://codeclimate.com/github/hiftekhar/cs169-calredcross/coverage"> [![Coverage Status](https://coveralls.io/repos/github/hiftekhar/cs169-calredcross/badge.svg)](https://coveralls.io/github/hiftekhar/cs169-calredcross) </a> [![Issue Count](https://codeclimate.com/github/hiftekhar/cs169-calredcross/badges/issue_count.svg)](https://codeclimate.com/github/hiftekhar/cs169-calredcross) [![Build Status](https://travis-ci.org/hiftekhar/cs169-calredcross.svg?branch=master)](https://travis-ci.org/hiftekhar/cs169-calredcross)
 
-<a href="https://damp-forest-29318.herokuapp.com/"><div>Link to Heroku App</div></a>
+<a href="https://calredcross.herokuapp.com/"><div>Link to Heroku App</div></a>
 <a href="https://www.pivotaltracker.com/n/projects/1885881"><div>Link to PivotalTracker</div></a>
 
 
