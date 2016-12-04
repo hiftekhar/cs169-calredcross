@@ -1,5 +1,5 @@
 require 'google/api_client/client_secrets'
-
+require 'date'
 class ProfileController < ApplicationController
 
   def index
@@ -23,6 +23,9 @@ class ProfileController < ApplicationController
     response = JSON.parse(buffer)
     
     @events = response["items"]
+    @today = Time.now.strftime("%Y-%m-$d")
+    print("~~~~~~~~~~" + @today)
+   
         
    
   end
