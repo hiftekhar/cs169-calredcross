@@ -20,7 +20,9 @@
         <div id="gallery">
             <div class="photos-title">
                 <h2 id="photo-title">Photos</h2>
-                <div id="add-photos-button">+ Add Photos</div> 
+                <% if current_user %>
+                    <div id="add-photos-button">+ Add Photos</div> 
+                <% end %>
             </div>
             <div class="photos-display">
                 <% @photos.each do |photo| %>
