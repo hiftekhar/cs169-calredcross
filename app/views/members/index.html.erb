@@ -67,11 +67,23 @@
                         <div class="member-name" id= <%=member.id %>><%= member.name %></div>
                         <div id="member-email"><img id="email-symbol" src="/images/email.png"><%= member.email %></div>
                     </div>
-                    <% if member.is_officer == 1 %>
-                        <div class="member-officer-status" id= <%=member.id %>>
-                           Officer
-                        </div>
-                    <% end %>
+                        <% if current_user and current_user.is_officer == 1 %>
+                             <% if member.is_officer == 1 %>
+                                <div class="member-officer-status" id= <%=member.id %>>
+                                   Officer
+                                </div>
+                            <% else %>
+                                <div class="member-officer-status not" id= <%=member.id %>>
+                                   Make Officer
+                                </div>
+                            <% end %>
+                        <% else %>
+                             <% if member.is_officer == 1 %>
+                                <div class="member-officer-status-nonclick" id= <%=member.id %>>
+                                   Officer
+                                </div>
+                            <% end %>
+                        <% end %>
                     <% if member.status == "t" %>
                         <div class="member-status active" id= <%=member.id %>>
                            Active
@@ -251,7 +263,33 @@
         $(".member-name").click(function() {
             var id = $(this).attr("id");
             window.location.href = "/profile/" + id;
-        })
+        });
+        $(".member-officer-status").click(function() {
+            var id = $(this).attr("id");
+            var is_not_officer = $(this).hasClass("not");
+            $.ajax({
+                        type : 'post',
+                        url : "/members/update",
+                        data : {"is_not_officer": is_not_officer, "member": id
+                        },    
+                        dataType : 'json',
+                        async : false,
+                        context : $(this),
+                        success : function(response) {
+                            if (is_not_officer) {
+                                $(this).removeClass("not");
+                                $(this).text("Officer")
+                            }
+                            else {
+                                $(this).addClass("not");
+                                $(this).text("Make Officer")
+                            }
+                            window.location.href = "/members";
+                        }
+                      });
+            
+                
+        });
     </script>
 </body>
 </html>

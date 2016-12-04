@@ -95,6 +95,13 @@ class User < ApplicationRecord
       member.update_attribute(:status, stat)
     end
   end
+  
+  def updateOfficerStatus(id, stat)
+    member = User.find(id)
+    if self.is_officer == 1 
+      member.update_attribute(:is_officer, stat)
+    end
+  end
 
   
   # Need modification for the level according to the new sem_hours and total_hours

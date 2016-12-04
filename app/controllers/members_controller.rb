@@ -11,6 +11,7 @@ class MembersController < ApplicationController
   def update 
     status = params["status"]
     user = params["member"]
+    is_not_officer = params["is_not_officer"]
     
     if status
       if status == "false"
@@ -19,7 +20,15 @@ class MembersController < ApplicationController
         current_user.updateStatus(user, true)
       end
     end
+    if is_not_officer
+      if is_not_officer == "false"
+        current_user.updateOfficerStatus(user, 0)
+      else
+        current_user.updateOfficerStatus(user, 1)
+      end
+    end
   end
+  
   def update_hours
     user = params["member"]
     added_hours = params["added_hours"].to_i
@@ -30,8 +39,8 @@ class MembersController < ApplicationController
         redirect_to root_path
       end
     end
-    
   end
+  
   def delete
     member = params["member"]
     current_user.deleteMember(member)
