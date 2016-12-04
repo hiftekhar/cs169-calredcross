@@ -201,8 +201,12 @@
             async : false,
             context : document.body,
             success : function(response) {
-                $("#" + current_photo + " .carousel-image").attr("src", url);
-                $("#" + current_photo + " .photo-text").text(text);
+                if (url != "") {
+                    $("#" + current_photo + " .carousel-image").attr("src", url);
+                };
+                if (text != "") {
+                    $("#" + current_photo + " .photo-text").text(text);
+                };
             }
         });
     });
