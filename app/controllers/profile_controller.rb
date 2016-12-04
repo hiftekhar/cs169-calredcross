@@ -15,9 +15,14 @@ class ProfileController < ApplicationController
     else
       @level = "bronze_medal.png"
     end
- 
-        
-        @events = []
+    @date = Time.now.utc.strftime('%FT%TZ')
+    @url = "https://www.googleapis.com/calendar/v3/calendars/americanredcrossatcal@gmail.com/events?key=AIzaSyAN3MLI-jD6mS6425sjj9QcBPWykxvsxZY&timeMin=" + @date
+    
+    require 'open-uri'
+    buffer = open(@url).read
+    response = JSON.parse(buffer)
+    
+    @events = response["items"]
         
    
   end
