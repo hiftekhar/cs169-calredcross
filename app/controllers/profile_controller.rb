@@ -16,13 +16,26 @@ class ProfileController < ApplicationController
       @level = "bronze_medal.png"
     end
     @date = Time.now.utc.strftime('%FT%TZ')
-    @url = "https://www.googleapis.com/calendar/v3/calendars/americanredcrossatcal@gmail.com/events?key=AIzaSyAN3MLI-jD6mS6425sjj9QcBPWykxvsxZY&timeMin=" + @date
+    @url = "https://www.googleapis.com/calendar/v3/calendars/americanredcrossatcal@gmail.com/events?key=AIzaSyAN3MLI-jD6mS6425sjj9QcBPWykxvsxZY&timeMin=" + @date 
     
     require 'open-uri'
     buffer = open(@url).read
     response = JSON.parse(buffer)
     
     @events = response["items"]
+    @events = @events.sort { |x,y| 
+      date1 = x["start"]["date"] || x["start"]["dateTime"]
+      date2 = y["start"]["date"] || y["start"]["dateTime"]
+      date1 = date1.to_time
+      date2 = date2.to_time
+      if date1 < date2
+        -1
+      elsif date1 > date2
+        1
+      else 
+        0
+      end
+    } 
     # @today = Time.now.strftime("%Y-%m-%d")
     @today = Time.now.in_time_zone("Pacific Time (US & Canada)").strftime("%Y-%m-%d")
     print("~~~~~~~~~~" + @today)
