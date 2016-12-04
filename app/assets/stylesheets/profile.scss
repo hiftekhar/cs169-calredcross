@@ -263,15 +263,24 @@ input[type="file"]:focus {
     padding-right: 10px;
     display: inline-block;
 }
-.event-today {
+.event-date.today {
     position: relative;
-    text: #ff1313;
+    color: #ff1313;
     float: left;
-    font-size: 12px;
+    font-size: 14px;
     text-transform: uppercase;
     width: 65px;
     padding-right: 10px;
     display: inline-block;
+}
+.event-dot.today {
+    display: inline-block;
+    position: relative;
+    margin-left: -4px;
+    width: 10px;
+    height: 10px;
+    background-color: #ff1313;
+    border-radius: 50%;
 }
 .event-dot {
     display: inline-block;
@@ -288,6 +297,13 @@ input[type="file"]:focus {
     position: relative;
     font-size: 12px;
     margin-left: 20px;
+}
+.event-name.today {
+    display: inline-block;
+    position: relative;
+    font-size: 14px;
+    margin-left: 20px;
+    color: #ff1313;
 }
 
 #edit-help {

@@ -63,20 +63,48 @@
                     <div id="event-timeline">
                         <% @events.last(6).each do |event| %>
                            <div class="event-object">
-                               <% if event["start"]["date"] == @today %>
-                                   <div class="event-today">
-                                        <%= event["start"]["date"].to_time.strftime("%b %d") %>
-                                    </div>
+                               <% if event["start"]["date"] %>
+                                   <% if event["start"]["date"] == @today %>
+                                       <div class="event-date today">
+                                            <%= event["start"]["date"].to_time.strftime("%b %d") %>
+                                        </div>
+                                        <div class= "event-dot today">
+                                        </div>
+                                        <div class= "event-name today">
+                                            <%= event["summary"] %>
+                                        </div>
+                                    <% else %>
+                                        <div class="event-date">
+                                            <b><%= event["start"]["date"].to_time.strftime("%b %d") %></b>
+                                        </div>
+                                        <div class= "event-dot">
+                                        </div>
+                                        <div class= "event-name">
+                                            <%= event["summary"] %>
+                                        </div>
+                                    <% end %>
                                 <% else %>
-                                    <div class="event-date">
-                                        <b><%= event["start"]["date"].to_time.strftime("%b %d") %></b>
-                                    </div>
+                                    <% if event["start"]["dateTime"].to_time.strftime("%Y-%m-%d") == @today %>
+                                       <div class="event-date today">
+                                            Today
+                                        </div>
+                                        <div class= "event-dot today">
+                                        </div>
+                                        <div class= "event-name today">
+                                            <%= event["summary"] %>
+                                        </div>
+                                    <% else %>
+                                        <div class="event-date">
+                                            <b><%= event["start"]["dateTime"].to_time.strftime("%b %d") %></b>
+                                        </div>
+                                        <div class= "event-dot">
+                                        </div>
+                                        <div class= "event-name">
+                                            <%= event["summary"] %>
+                                        </div>
+                                    <% end %>
                                 <% end %>
-                                <div class= "event-dot">
-                                </div>
-                                <div class= "event-name">
-                                    <%= event["summary"] %>
-                                </div>
+                                
                             </div>
                         <%end %>
                     </div>

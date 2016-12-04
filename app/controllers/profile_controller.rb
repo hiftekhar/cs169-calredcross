@@ -23,8 +23,12 @@ class ProfileController < ApplicationController
     response = JSON.parse(buffer)
     
     @events = response["items"]
-    @today = Time.now.strftime("%Y-%m-$d")
+    # @today = Time.now.strftime("%Y-%m-%d")
+    @today = Time.now.in_time_zone("Pacific Time (US & Canada)").strftime("%Y-%m-%d")
     print("~~~~~~~~~~" + @today)
+    @events.each do |event|
+      print(event.to_s + "\n")
+    end
    
         
    
