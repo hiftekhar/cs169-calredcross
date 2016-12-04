@@ -1,7 +1,7 @@
 class HomeController < ApplicationController
   # For the sake of testing Heroku
   def index
-    @images = Info.first.home_images
+    @images = Info.first.home_images.order(:id)
 
     if Info.all.empty?
       @info = Info.new
