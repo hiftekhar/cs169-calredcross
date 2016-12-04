@@ -4,11 +4,58 @@
   <title>The page you were looking for doesn't exist (404)</title>
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <style>
-  
+    @font-face {
+    font-family: Regular;
+    src: url("/fonts/regular.otf") format("opentype");
+    font-weight: normal;
+    font-style: normal;
+  }
+    body, html {
+      position: relative;
+      height: 100%;
+      width: 100%;
+      font-family: Regular;
+    }
+    #content {
+      position: relative;
+      top: 50%;
+      transform: translateY(-50%);
+      margin: 0 auto;
+      text-align: center;
+      width: 400px;
+    }
+    #bloodman {
+      width: 400px;
+    }
+    #text {
+      text-align: center;
+      position: relative;
+      margin-top: 20px;
+      font-size: 21px;
+      color: black;
+      font-family: Regular;
+    }
+    a {
+      text-decoration: none;
+      color: #ED1B2E;
+      
+    }
+    #link {
+      position: relative;
+      display: block;
+      float: right;
+      font-size: 12px;
+      text-transform: uppercase;
+      margin-top: 10px;
+    }
   </style>
 </head>
 
 <body>
- <img src="/images/bloodman.png">
+  <div id="content">
+    <img id="bloodman" src="/images/bloodman.png">
+    <div id="text">Looks like what you're looking for isn't here!</div>
+     <a id="link" href="/"> Go back home →</a>
+  </div>
 </body>
 </html>
