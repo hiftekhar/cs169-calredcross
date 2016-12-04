@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   post 'galleries/add-favorite', :to => 'galleries#addFavorite'
   post 'galleries/add-photo', :to => 'galleries#addPhoto'
   # get 'profile/index'
+  get 'profile/:id', :to => "profile#getUser"
   get 'profile/events_one', :to => "profile#events_one"
   post 'profile/update', :to => 'profile#update'
   post 'members/update', :to => 'members#update'

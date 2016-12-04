@@ -62,6 +62,9 @@ body {
 .member-row:hover .member-status{
    right: 225px;
 }
+.member-row:hover .member-officer-status{
+   right: 325px;
+}
 .member-row:hover .toggle-active-button {
     width: 100px;
 }
@@ -104,6 +107,21 @@ body {
     transition: 0.3s;
     -webkit-transition: 0.3s;
 }
+.member-officer-status {
+    display: inline-block;
+    position: absolute;
+    right: 225px;
+    top: 50%;
+    transform: translateY(-50%);
+    border-radius: 5px;
+    width: 90px;
+    text-align: center;
+    padding: 5px;
+    color: white;
+    transition: 0.3s;
+    -webkit-transition: 0.3s;
+    background-color: #004B79;
+}
 .toggle-active-button.active {
     background-color: #357B2C;
 }
@@ -130,6 +148,7 @@ body {
 .member-name {
     font-size: 20px;
     position: relative;
+    cursor: pointer;
 }
 
 #member-details-name {

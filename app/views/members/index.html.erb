@@ -64,9 +64,14 @@
                         <%= image_tag(member.avatar.url(:thumb), :class => "profile-image") %>
                     </div>
                     <div class="member-info">
-                        <div class="member-name" id= <%=member.id %> ><%= member.name %></div>
+                        <div class="member-name" id= <%=member.id %>><%= member.name %></div>
                         <div id="member-email"><img id="email-symbol" src="/images/email.png"><%= member.email %></div>
                     </div>
+                    <% if member.is_officer == 1 %>
+                        <div class="member-officer-status" id= <%=member.id %>>
+                           Officer
+                        </div>
+                    <% end %>
                     <% if member.status == "t" %>
                         <div class="member-status active" id= <%=member.id %>>
                            Active
@@ -242,6 +247,10 @@
                       });
                 
             }
+        });
+        $(".member-name").click(function() {
+            var id = $(this).attr("id");
+            window.location.href = "/profile/" + id;
         })
     </script>
 </body>

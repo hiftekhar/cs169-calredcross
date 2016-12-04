@@ -10,7 +10,9 @@
     <div id="profile-container">
         <div class="top-bar">
             <div id="edit-container">
-                <img src="images/white_edit.png" id="top-edit">
+                
+                <%= image_tag("white_edit.png", :id => "top-edit") %>
+
             </div>
             <div id="edit-help">
                 Click here to toggle edit your profile. Editable text will turn red, uneditable text will turn black.
@@ -34,7 +36,7 @@
                         <div id="status-badge" class="inactive">Inactive</div>
                     <% end %>
                 </div>
-                <img id="email-symbol" src="/images/email.png"><p id="profile-email"><%= current_user.email %></p>
+                <%= image_tag("email.png", :id => "email-symbol") %><p id="profile-email"><%= current_user.email %></p>
                 <div id="about-me">
                     <%= current_user.description %>
                 </div>
