@@ -21,7 +21,8 @@ Given /the following member exists/ do |members_table|
     two.total_hours = "10"
     @hashes = [one, two]
    
-  
+   User.create(:id => 12, :name => "Weird Dance", :email => "hi31aaaa@gmail.com", :password => "miseryisme", :major => "CS")
+    
 end 
 
 And /^I click the edit button$/ do 
@@ -119,8 +120,8 @@ end
 
 When(/^I fill in the ranking to officer$/) do
   member_one = @hashes[0]
-  member_one.updateRanking(1)
-  member_one.updateStatus(1, "active")
+  member_one.updateRanking(12)
+  member_one.updateStatus(12, "active")
 end
   
 
@@ -152,12 +153,12 @@ end
 
 Then(/^I fill in semester hours with (\d+)$/) do |arg1| 
   @hashes[0].is_officer = 0 
-  @hashes[0].updateSemHours(1 , arg1)
+  @hashes[0].updateSemHours(12 , arg1)
 end
 
 Then(/^as an officer, I fill in semester hours with (\d+)$/) do |arg1|
   @hashes[0].is_officer = 1
-  @hashes[0].updateSemHours(1 , arg1)
+  @hashes[0].updateSemHours(12 , arg1)
 end
 
 Then(/^as not an officer, I should see semester hours updated with "([^"]*)"$/) do |arg1|
@@ -174,8 +175,8 @@ Then(/^I fill in total hours with (\d+)$/) do |arg1|
     @hashes[0].is_officer = 0 
     # need to check if I'm an officer or not 
     bool_val = @hashes[0].isOfficer
-    hours_one = @hashes[0].getMemberTotalHours(1)
-    @hashes[0].updateTotalHours(1, arg1)
+    hours_one = @hashes[0].getMemberTotalHours(12)
+    @hashes[0].updateTotalHours(12, arg1)
 end
 
 Then(/^I should see total hours updated with "([^"]*)"$/) do |arg1|
@@ -186,7 +187,7 @@ end
 When(/^as an officer, I fill in total hours with (\d+)$/) do |arg1|
     @hashes[0].is_officer = 1  
     bool_val = @hashes[0].isOfficer
-    @hashes[0].updateTotalHours(1, arg1.to_i)
+    @hashes[0].updateTotalHours(12, arg1.to_i)
 end
 
 Then(/^as an officer, I should see total hours updated with "([^"]*)"$/) do |arg1|
@@ -215,13 +216,13 @@ end
 
 When(/^I fill in the semester hours for member "([^"]*)" with (\d+)$/) do |arg1, arg2|
   @hashes[0].is_officer = 1 
-  @user2 = @hashes[0].getMember(1) #extract info 
+  @user2 = @hashes[0].getMember(12) #extract info 
   #expect(@user2.name).to eq(arg1)
-  name_one = @hashes[0].getMemberName(1) #extract info
-  email_one = @hashes[0].getMemberEmail(1)
-  sem_hours = @hashes[0].getMemberSemHours(1)
-  @hashes[0].updateSemHours(1, arg2.to_i)
-  @user3 = @hashes[0].getMember(1)
+  name_one = @hashes[0].getMemberName(12) #extract info
+  email_one = @hashes[0].getMemberEmail(12)
+  sem_hours = @hashes[0].getMemberSemHours(12)
+  @hashes[0].updateSemHours(12, arg2.to_i)
+  @user3 = @hashes[0].getMember(12)
   @user3.total_hours = 13 
   #print(@user3.sem_hours)
   #print(@user3.total_hours)
@@ -242,9 +243,9 @@ end
 
 When(/^I fill in the semester hours for member "([^"]*)" with "([^"]*)"$/) do |arg1, arg2|
   @hashes[0].is_officer = 1 
-  @user2 = @hashes[0].getMember(1)
-  @sem_hours = @hashes[0].getMemberSemHours(1)
-  @hours = @hashes[0].updateSemHours(1, arg2)
+  @user2 = @hashes[0].getMember(12)
+  @sem_hours = @hashes[0].getMemberSemHours(12)
+  @hours = @hashes[0].updateSemHours(12, arg2)
   
 end
 
@@ -254,8 +255,8 @@ end
 
 When(/^I click the status for member "([^"]*)"$/) do |arg1|
   @hashes[0].is_officer = 1
-  @hashes[0].updateStatus(1, "inactive")
-  @user4 = User.find(1)
+  @hashes[0].updateStatus(12, "inactive")
+  @user4 = User.find(12)
  # print(@user4.status)
   #pending # Write code here that turns the phrase above into concrete actions
 end

@@ -18,8 +18,7 @@ script:
 #  - bundle exec rake db:migrate
 #  - RAILS_ENV=test bundle exec rake db:migrate --trace
 #  - bundle exec rake db:test:prepare 
-#  - bin/rails db:migrate RAILS_ENV=test 
-  - bundle exec rake db:seed
+#  - bin/rails db:migrate RAILS_ENV=test  
   - bundle exec rake 
 #  - bundle exec rake
     
