@@ -24,7 +24,8 @@ Scenario: officer signs up
   And  I fill in email with "curryofficer@gmail.com"
   And I fill in major with "EECS"
   And  I fill in password with "sc30forthewin" 
-  Then  I press the "Sign up" button  
+  And  I press "Sign up"
+  Then I go to the profile page
   
 Scenario: members sign up
   When I go to the login page 
@@ -32,5 +33,6 @@ Scenario: members sign up
   And I fill in major with "Bio"
   And  I fill in email with "jamesmember@gmail.com"
   And  I fill in password with "gswbetterthancavs"
-  Then  I press the "Sign up" button
-   
+  And  I press "Sign up"
+  Then I go to the profile page 
+  
